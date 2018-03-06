@@ -1,7 +1,24 @@
 package main
 
-import "fmt"
+import (
+  "fmt"
+  "log"
+  "os"
+
+  "github.com/urfave/cli"
+)
 
 func main() {
-  fmt.Println("hello")
+  app := cli.NewApp()
+  app.Name = "Todo Manager"
+  app.Usage = "タスク管理ツール"
+  app.Action = func(c *cli.Context) error {
+    fmt.Println("hogehoge")
+    return nil
+  }
+
+  err := app.Run(os.Args)
+  if err != nil {
+    log.Fatal(err)
+  }
 }
